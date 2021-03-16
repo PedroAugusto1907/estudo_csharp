@@ -27,7 +27,12 @@ namespace Gradebook
                     EntradaNota(book);
 
                     var result = book.gerar_resultado();
-                    System.Console.WriteLine($"Nome: {book.Name}\nMaior nota: {result.alta}\nMenor nota:{result.baixa}\nMédia geral:{result.media:N1}\nLetra atribuida: {result.letra}");
+                    var professor = new Professor();
+
+                    var selecao = professor.SelecionarProfesor();
+
+
+                    System.Console.WriteLine($"Nome: {book.Name}\nProfessor(a): {selecao.nome}\nÁrea: {selecao.area}\nMaior nota: {result.alta}\nMenor nota:{result.baixa}\nMédia geral:{result.media:N1}\nLetra atribuida: {result.letra}");
 
                     break;
 
