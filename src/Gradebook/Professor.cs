@@ -7,7 +7,7 @@ namespace Gradebook
     public class Professor
     {
 
-        public ProfessorArea SelecionarProfesor()
+        public ProfessorArea SelecionarProfessor()
         {
             var prof = new ProfessorArea();
             var professores = new List<string> { "Mauro", "Paula", "Rodrigo", "Ricardo", "Rafael", "Diego", "Marcela", "Jaqueline" };
