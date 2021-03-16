@@ -7,17 +7,33 @@ namespace Gradebook
     {
         static void Main(string[] args)
         {
-            System.Console.WriteLine("Digite um nome para atribuir ao livro:");
-            string nome = Console.ReadLine();
-            var book = new Book(nome);
-            book.NotaAdicionada += LogNotaAdicionada;
-
-            EntradaNota(book);
-
-            var result = book.gerar_resultado();
-
             
-            System.Console.WriteLine($"Maior nota: {result.alta}\nMenor nota:{result.baixa}\nMédia geral:{result.media:N1}\nLetra atribuida: {result.letra}");
+            while (true)
+            {
+
+                System.Console.WriteLine("Digite um nome para atribuir ao livro:");
+                string nome = Console.ReadLine();
+
+                if (string.IsNullOrEmpty(nome))
+                {
+                    System.Console.WriteLine("Um nome é necessário para criar o livro!!");
+
+                }
+                else
+                {
+                    var book = new Book(nome);
+
+                    book.NotaAdicionada += LogNotaAdicionada;
+                    EntradaNota(book);
+
+                    var result = book.gerar_resultado();
+                    System.Console.WriteLine($"Nome: {book.Name}\nMaior nota: {result.alta}\nMenor nota:{result.baixa}\nMédia geral:{result.media:N1}\nLetra atribuida: {result.letra}");
+
+                    break;
+
+                }
+
+            }
 
         }
 

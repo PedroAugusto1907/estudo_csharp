@@ -6,22 +6,8 @@ namespace Gradebook
 
     public delegate void NotaAdicionadaDelegate(object sender, EventArgs args);
 
-    public class NomesAtribuidos
-    {
-        public NomesAtribuidos(string name)
-        {
-            Name = name;
-        }
 
-        public string Name
-        {
-            get;
-            set;
-        }
-    }
-
-
-    public class Book : NomesAtribuidos
+    public class Book : AtribuirNome
     {
         public Book(string name) : base(name)
         {
