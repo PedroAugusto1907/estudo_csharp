@@ -21,12 +21,12 @@ namespace Gradebook
                 }
                 else
                 {
-                    var book = new Book(nome);
+                    var book = new InMemoryBook(nome);
 
                     book.NotaAdicionada += LogNotaAdicionada;
                     EntradaNota(book);
 
-                    var result = book.gerar_resultado();
+                    var result = book.GetStatistics();
                     var professor = new Professor();
 
                     var selecao = professor.SelecionarProfessor();
@@ -42,7 +42,7 @@ namespace Gradebook
 
         }
 
-        private static void EntradaNota(Book book)
+        private static void EntradaNota(IBook book)
         {
             while (true)
             {
@@ -59,7 +59,7 @@ namespace Gradebook
                 try
                 {
                     var nota = double.Parse(leitura);
-                    book.addnota(nota);
+                    book.AddNota(nota);
                 }
                 catch (FormatException ex)
                 {

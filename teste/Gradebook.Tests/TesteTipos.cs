@@ -36,8 +36,8 @@ namespace Gradebook.Tests
         [Fact]
         public void TesteCalculoNotas()
         {
-            var livro1 = new Book("Livro Pedro");
-            var livro2 = new Book("Livro Ricardo");
+            var livro1 = new InMemoryBook("Livro Pedro");
+            var livro2 = new InMemoryBook("Livro Ricardo");
 
             Assert.Equal("Livro Pedro", livro1.Name);
             Assert.Equal("Livro Ricardo", livro2.Name);
@@ -47,7 +47,7 @@ namespace Gradebook.Tests
         [Fact]
         public void TesteMudarNome()
         {
-            var livro1 = new Book("Livro Pedro");
+            var livro1 = new InMemoryBook("Livro Pedro");
 
             SetName(livro1, "Livro João");
 
@@ -61,7 +61,7 @@ namespace Gradebook.Tests
         [Fact]
         public void PassagemPorReferencia()
         {
-            var livro1 = new Book("Livro Pedro");
+            var livro1 = new InMemoryBook("Livro Pedro");
 
             referencia(ref livro1, "Livro Paulo");
 
@@ -69,15 +69,15 @@ namespace Gradebook.Tests
 
         }
 
-        private void referencia(ref Book livro1, string name)
+        private void referencia(ref InMemoryBook livro1, string name)
         {
 
-            livro1 = new Book(name);
+            livro1 = new InMemoryBook(name);
 
         }
 
 
-        private void SetName(Book livro, string name)
+        private void SetName(InMemoryBook livro, string name)
         {
 
             livro.Name = name;

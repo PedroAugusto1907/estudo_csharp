@@ -11,9 +11,9 @@ namespace Gradebook.Tests
         public void Notas()
         {
 
-            var livro1 = new Book("Livro Teste");
+            var livro1 = new InMemoryBook("Livro Teste");
 
-            livro1.addnota(105);
+            livro1.AddNota(105);
 
 
 

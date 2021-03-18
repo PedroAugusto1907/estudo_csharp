@@ -11,15 +11,15 @@ namespace Gradebook.Tests
         {
             //Passo 1 / Organizar dados
 
-            var book = new Book("");
-            book.addnota(45.2);
-            book.addnota(57.8);
-            book.addnota(78.2);
+            var book = new InMemoryBook("");
+            book.AddNota(45.2);
+            book.AddNota(57.8);
+            book.AddNota(78.2);
 
 
             //Passo 2 / Processamento dos dados  
 
-            var result = book.gerar_resultado();
+            var result = book.GetStatistics();
 
 
 

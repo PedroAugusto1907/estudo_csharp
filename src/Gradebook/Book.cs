@@ -7,16 +7,16 @@ namespace Gradebook
     public delegate void NotaAdicionadaDelegate(object sender, EventArgs args);
 
 
-    public class Book : AtribuirNome
+    public class InMemoryBook : BookBase
     {
-        public Book(string name) : base(name)
+        public InMemoryBook(string name) : base(name)
         {
 
             grades = new List<double>();
             Name = name;
         }
 
-        public void addnota(double nota)
+        public override void AddNota(double nota)
         {
             if (nota <= 100 && nota >= 0)
             {
@@ -32,9 +32,9 @@ namespace Gradebook
             }
         }
 
-        public event NotaAdicionadaDelegate NotaAdicionada;
+        public override event NotaAdicionadaDelegate NotaAdicionada;
 
-        public Statistics gerar_resultado()
+        public override Statistics GetStatistics()
         {
             var resultado = new Statistics();
             resultado.media = 0;
