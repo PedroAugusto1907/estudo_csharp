@@ -1,20 +1,49 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace Gradebook
 {
 
     public delegate void NotaAdicionadaDelegate(object sender, EventArgs args);
 
+    public class DiskBook : BookBase
+    {
+        public DiskBook(string name) : base(name)
+        {
+
+        }
+        public override event NotaAdicionadaDelegate NotaAdicionada;
+
+        public override Statistics GetStatistics()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void AddNota(double nota)
+        {
+            using(var writer = File.AppendText($"{Name}.txt"))
+            {
+                writer.WriteLine(nota);
+            }
+        }
+        
+          
+    }
 
     public class InMemoryBook : BookBase
     {
+        
         public InMemoryBook(string name) : base(name)
         {
 
             grades = new List<double>();
             Name = name;
+
+            var disk = new DiskBook(Name);
         }
+
+    
 
         public override void AddNota(double nota)
         {
@@ -37,9 +66,7 @@ namespace Gradebook
         public override Statistics GetStatistics()
         {
             var resultado = new Statistics();
-            resultado.media = 0;
-            resultado.alta = double.MinValue;
-            resultado.baixa = double.MaxValue;
+            
             for (var i = 0; i < grades.Count; i++)
             {
                 resultado.media += grades[i];

@@ -10,5 +10,11 @@ namespace Gradebook
 
         public char letra;
 
+        public Statistics()
+        {
+            media = 0;
+            alta = double.MinValue;
+            baixa = double.MaxValue;
+        }
     }
 }

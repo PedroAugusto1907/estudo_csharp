@@ -21,18 +21,16 @@ namespace Gradebook
                 }
                 else
                 {
-                    var book = new InMemoryBook(nome);
+                    IBook book = new DiskBook(nome);
+                    
 
                     book.NotaAdicionada += LogNotaAdicionada;
                     EntradaNota(book);
 
                     var result = book.GetStatistics();
-                    var professor = new Professor();
+                    
 
-                    var selecao = professor.SelecionarProfessor();
-
-
-                    System.Console.WriteLine($"Nome: {book.Name}\nProfessor(a): {selecao.nome}\nÁrea: {selecao.area}\nMaior nota: {result.alta}\nMenor nota:{result.baixa}\nMédia geral:{result.media:N1}\nLetra atribuida: {result.letra}");
+                    System.Console.WriteLine($"Nome: {book.Name}\nMaior nota: {result.alta}\nMenor nota:{result.baixa}\nMédia geral:{result.media:N1}\nLetra atribuida: {result.letra}");
 
                     break;
 

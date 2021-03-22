@@ -24,13 +24,10 @@ namespace Gradebook{
         {
 
         }
-        public virtual event NotaAdicionadaDelegate NotaAdicionada;
+        public abstract event NotaAdicionadaDelegate NotaAdicionada;
 
-        public virtual Statistics GetStatistics()
-        {
-            throw new NotImplementedException();
-        }
-
+        public abstract Statistics GetStatistics();
+        
         public abstract void AddNota(double nota);
        
     }
